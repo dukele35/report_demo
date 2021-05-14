@@ -1,23 +1,27 @@
 from report import input_true_classes
 
-# ------------------------------- #
-##### input_true_classes(dir) #####
-# ------------------------------- # 
-def test_input_true_classes_type():
-    # to test if the output is a dictionary
-    assert type(input_true_classes('test')) is dict
+def test_input_true_classes():
+    hashed_imgs = input_true_classes('test')
+    check_images_type(hashed_imgs)
+    check_input_formats(hashed_imgs)
+    check_input_duplication(hashed_imgs)
+    check_output_values(hashed_imgs)
 
-def test_input_true_classes_inputformats():
+def check_images_type(hashed_imgs):
+    # to test if the output is a dictionary
+    assert type(hashed_imgs) is dict
+
+def check_input_formats(hashed_imgs):
     # to test if the input is in the right formats, i.e. .png, .jpeg or .jpg
-    formats = [i.lower().endswith(('.png', '.jpg', '.jpeg')) for i in list(input_true_classes('test').keys())]
+    formats = [i.lower().endswith(('.png', '.jpg', '.jpeg')) for i in list(hashed_imgs.keys())]
     assert all(formats) is True
 
-def test_input_true_classes_inputduplication():
+def check_input_duplication(hashed_imgs):
     # to test if any of the images in the input are duplicated with respect to filenames
-    assert len(list(input_true_classes('test').keys())) == len(set(input_true_classes('test').keys()))
+    assert len(list(hashed_imgs.keys())) == len(set(hashed_imgs.keys()))
 
-def test_inpt_true_classes_outputvalues():
+def check_output_values(hashed_imgs):
     # to test if values of the output dictionary belong to the set of symptons, i.e. None, Mild, Moderate, Severe & Proliferative
-    values = set(input_true_classes('test').values())
+    values = set(hashed_imgs.values())
     test_set = {'None','Mild','Moderate','Severe','Proliferative'}
-    assert values.issubset(test_set) is True 
+    assert values.issubset(test_set) is True

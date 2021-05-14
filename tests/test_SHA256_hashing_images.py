@@ -1,8 +1,5 @@
 from report import SHA256_hashing_images
 
-# ------------------------------- #
-### SHA256_hashing_images(dir) ####
-# ------------------------------- # 
 def test_SHA256_hashing_images():
     hashed_imgs = SHA256_hashing_images('test')
     check_images_type(hashed_imgs)
@@ -26,4 +23,3 @@ def check_input_duplication(hashed_imgs):
 def check_output_duplication(hashed_imgs):
     # to test if any of the SHA256 in the output are duplicated 
     assert len(list(hashed_imgs.values())) == len(set(hashed_imgs.values()))
-
