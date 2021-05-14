@@ -173,7 +173,7 @@ if __name__== "__main__":
     command_operation('docker run -d -p 5000:5000 dukele35/drmvp1:1.0')
 
     # Step 2. Assigning the url and directory containing images
-    url = 'http://0.0.0.0:5000/predict'
+    url = 'http://0.0.0.0:5000/predict'   # remove this from this 
     dir = 'test/'
 
     # Step 3. Getting predictions for images in dir
